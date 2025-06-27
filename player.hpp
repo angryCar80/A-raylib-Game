@@ -6,12 +6,11 @@ class Player {
   Player();
   void Draw();
   void Update(float dt);
-
- private:
+  Rectangle GetRec();
+  float velocity;
+  Vector2 position;
   float width;
   float height;
-  float velocity;
   float gravity;
   float speed;
-  Vector2 position;
 };

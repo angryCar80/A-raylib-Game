@@ -12,6 +12,14 @@ int main() {
   Ground ground;
   while (!WindowShouldClose()) {
     float dt = GetFrameTime();
+
+    bool isColliding = CheckCollisionRecs(player.GetRec(), ground.getRec());
+
+    if (isColliding){
+      player.velocity *= -0.5f;
+      player.position.y = ground.position.y - player.height;
+    }
+
     BeginDrawing();
     ClearBackground(BLACK);
     DrawFPS(0, 0);

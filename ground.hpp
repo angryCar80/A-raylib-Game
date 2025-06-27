@@ -7,7 +7,6 @@ class Ground {
   void Draw();
   void Update();
   Rectangle getRec();
- private:
   float width;
   float height;
   Vector2 position;

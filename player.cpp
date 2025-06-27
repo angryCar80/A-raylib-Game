@@ -26,3 +26,7 @@ void Player::Update(float dt) {
     position.x -= speed * dt;
   }
 }
+
+Rectangle Player::GetRec(){
+  return Rectangle {position.x, position.y, width, height};
+}
