@@ -11,6 +11,7 @@ Player::Player() {
   speed = 100;
   gravity = 980;
   velocity = 0;
+  jumpforce = 250.0f;
 }
 
 void Player::Draw() {
@@ -24,6 +25,10 @@ void Player::Update(float dt) {
     position.x += speed * dt;
   } else if (IsKeyDown(KEY_A)) {
     position.x -= speed * dt;
+  }
+  else if (IsKeyDown(KEY_SPACE) && onGround){
+    position.y -= jumpforce;
+    onGround = false;
   }
 }
 

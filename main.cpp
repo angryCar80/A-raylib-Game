@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include <cmath>
 #include "ground.hpp"
 #include "player.hpp"
 
@@ -15,9 +16,19 @@ int main() {
 
     bool isColliding = CheckCollisionRecs(player.GetRec(), ground.getRec());
 
-    if (isColliding){
-      player.velocity *= -0.5f;
+    if (isColliding) {
+      player.velocity = 0;
       player.position.y = ground.position.y - player.height;
+      Rectangle groundi = ground.getRec();
+      //player.SetY(groundi.y - player.height / 2);
+      if (fabs(player.velocity) < 5.0f) {
+        player.velocity = 0;
+        player.onGround = true;
+      } else {
+        player.onGround = false;
+      }
+    } else {
+      player.onGround = false;
     }
 
     BeginDrawing();
@@ -30,3 +41,5 @@ int main() {
     EndDrawing();
   }
 }
+
+// g++ main.cpp player.cpp ground.cpp -o game -lraylib -lm -ldl -lpthread -lGL -lrt -lX11
