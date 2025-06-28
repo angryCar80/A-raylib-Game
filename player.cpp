@@ -11,7 +11,7 @@ Player::Player() {
   speed = 100;
   gravity = 980;
   velocity = 0;
-  jumpforce = 250.0f;
+  jumpforce = 450.0f;
 }
 
 void Player::Draw() {
@@ -21,11 +21,11 @@ void Player::Draw() {
 void Player::Update(float dt) {
   velocity += gravity * dt;
   position.y += velocity * dt;
-  if (IsKeyDown(KEY_SPACE) && onGround){
-    position.y = jumpforce;
+  if (IsKeyDown(KEY_SPACE) && onGround) {
+    velocity = -jumpforce;
   }
 }
 
-Rectangle Player::GetRec(){
-  return Rectangle {position.x, position.y, width, height};
+Rectangle Player::GetRec() {
+  return Rectangle{position.x, position.y, width, height};
 }

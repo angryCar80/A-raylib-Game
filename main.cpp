@@ -1,4 +1,5 @@
 #include <raylib.h>
+
 #include "ground.hpp"
 #include "player.hpp"
 
@@ -12,14 +13,13 @@ int main() {
   Ground ground;
   while (!WindowShouldClose()) {
     float dt = GetFrameTime();
-    
-    if(CheckCollisionRecs(player.GetRec(), ground.getRec())){
+
+    if (CheckCollisionRecs(player.GetRec(), ground.getRec())) {
       player.position.y = ground.position.y - player.height;
 
-      player.velocity = 0; 
+      player.velocity = 0;
       player.onGround = true;
-    }
-    else {
+    } else {
       player.onGround = false;
     }
 
@@ -33,4 +33,3 @@ int main() {
     EndDrawing();
   }
 }
-
