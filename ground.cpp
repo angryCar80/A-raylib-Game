@@ -9,7 +9,7 @@ Ground::Ground(){
 }
 
 void Ground::Draw(){
-  DrawRectangle(position.x, position.y, width, height, WHITE);
+  DrawRectangle(position.x, position.y, width, height, GREEN);
 }
 
 Rectangle Ground::getRec(){

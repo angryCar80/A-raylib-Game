@@ -15,20 +15,14 @@ Player::Player() {
 }
 
 void Player::Draw() {
-  DrawRectangle(position.x, position.y, width, height, WHITE);
+  DrawRectangle(position.x, position.y, width, height, BLUE);
 }
 
 void Player::Update(float dt) {
   velocity += gravity * dt;
   position.y += velocity * dt;
-  if (IsKeyDown(KEY_D)) {
-    position.x += speed * dt;
-  } else if (IsKeyDown(KEY_A)) {
-    position.x -= speed * dt;
-  }
-  else if (IsKeyDown(KEY_SPACE) && onGround){
-    position.y -= jumpforce;
-    onGround = false;
+  if (IsKeyDown(KEY_SPACE) && onGround){
+    position.y = jumpforce;
   }
 }
 
