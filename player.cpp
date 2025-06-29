@@ -1,5 +1,7 @@
 #include "player.hpp"
+
 #include <raylib.h>
+
 #include <algorithm>
 
 Player::Player() {
@@ -24,25 +26,15 @@ void Player::Draw() {
 void Player::Update(float dt) {
   velocity += gravity * dt;
   position.y += velocity * dt;
-  if (IsKeyDown(KEY_SPACE) && onGround) {
-    velocity = -jumpforce;
-  }
-  if (IsKeyDown(KEY_D)) dir += 1;
-  if (IsKeyDown(KEY_A)) dir -= 1;
-
-  if (dir != 0) {
-    position.x += dir * accel * dt;
-    position.x = std::clamp(position.x, -maxspeed, maxspeed);
-  } else {
-    if (position.x > 0) {
-      position.x = std::max(0.0f, position.x - decel * dt);
-    } else if (position.x < 0) {
-      position.x = std::min(0.0f, position.x + decel * dt);
-    }
-  }
-  position.x = dir * speed;
 }
 
+void Player::Move(float dt) {
+  if (IsKeyDown(KEY_SPACE)) {
+    velocity = -jumpforce;
+  }
+  if(IsKeyDown(KEY_RIGHT)) position.x += 2; 
+  if (IsKeyDown(KEY_LEFT)) position.x += 2;
+}
 Rectangle Player::GetRec() {
   return Rectangle{position.x, position.y, width, height};
 }
