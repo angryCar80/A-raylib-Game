@@ -29,11 +29,12 @@ void Player::Update(float dt) {
 }
 
 void Player::Move(float dt) {
+  if (IsKeyDown(KEY_RIGHT)) position.x += 2;
+  if (IsKeyDown(KEY_LEFT)) position.x += 2;
+
   if (IsKeyDown(KEY_SPACE)) {
     velocity = -jumpforce;
   }
-  if(IsKeyDown(KEY_RIGHT)) position.x += 2; 
-  if (IsKeyDown(KEY_LEFT)) position.x += 2;
 }
 Rectangle Player::GetRec() {
   return Rectangle{position.x, position.y, width, height};
