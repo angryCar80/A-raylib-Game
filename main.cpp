@@ -26,6 +26,11 @@ int main() {
     BeginDrawing();
     ClearBackground(BLACK);
     DrawFPS(10, 10);
+    DrawText(TextFormat("onGround %d   velY %.1f   SPACE %d",
+                    player.onGround,
+                    player.position.y,
+                    IsKeyPressed(KEY_SPACE)),
+         10, 30, 20, YELLOW);
     // Drawing the player
     player.Draw();
     player.Update(dt);

@@ -1,12 +1,13 @@
 #pragma once
 #include <raylib.h>
+#include <raymath.h>
 
 class Player {
  public:
   Player();
   void Draw();
   void Update(float dt);
-  void SetY(float y) { position.y = y; } 
+  void SetY(float y) { position.y = y; }
   Rectangle GetRec();
   float jumpforce;
   float velocity;
@@ -16,4 +17,10 @@ class Player {
   float gravity;
   float speed;
   bool onGround;
+
+ private:
+  int dir;
+  float accel;
+  float decel;
+  float maxspeed;
 };
