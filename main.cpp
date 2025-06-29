@@ -1,5 +1,3 @@
-#include <raylib.h>
-
 #include "ground.hpp"
 #include "player.hpp"
 
@@ -16,11 +14,9 @@ int main() {
     float dt = GetFrameTime();
 
     if (CheckCollisionRecs(player.GetRec(), ground.getRec())) {
-      player.position.y = ground.position.y - player.height;
-      player.velocity = 0;
+      player.position.y = (ground.position.y-35) - player.height;
     }
     player.Update(dt);
-    player.Move(dt);
     BeginDrawing();
     ClearBackground(BLACK);
     DrawFPS(10, 10);

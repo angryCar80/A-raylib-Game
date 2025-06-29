@@ -1,8 +1,6 @@
 #include "player.hpp"
-
 #include <raylib.h>
 
-#include <algorithm>
 
 Player::Player() {
   // Setting the values
@@ -11,9 +9,6 @@ Player::Player() {
   width = 50;
   height = 50;
   speed = 5;
-  gravity = 980;
-  velocity = 0;
-  jumpforce = 450.0f;
   accel = 50.0f;
   decel = 20.0f;
   maxspeed = 300.0f;
@@ -24,18 +19,12 @@ void Player::Draw() {
 }
 
 void Player::Update(float dt) {
-  velocity += gravity * dt;
-  position.y += velocity * dt;
+  if (IsKeyDown(KEY_LEFT)) position.x -= speed;
+  if (IsKeyDown(KEY_RIGHT)) position.x += speed;
+  if (IsKeyDown(KEY_UP)) position.y -= speed;
+  if (IsKeyDown(KEY_DOWN)) position.y += speed;
 }
 
-void Player::Move(float dt) {
-  if (IsKeyDown(KEY_RIGHT)) position.x += 2;
-  if (IsKeyDown(KEY_LEFT)) position.x += 2;
-
-  if (IsKeyDown(KEY_SPACE)) {
-    velocity = -jumpforce;
-  }
-}
 Rectangle Player::GetRec() {
   return Rectangle{position.x, position.y, width, height};
 }

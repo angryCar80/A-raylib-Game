@@ -13,14 +13,10 @@ class Player {
   void Move(float dt);
   Rectangle GetRec();
   // Setting Values
-  float jumpforce;
-  float velocity;
   Vector2 position;
   float width;
   float height;
-  float gravity;
   float speed;
-  bool onGround;
 
  private:
   // Setting Movement Values
